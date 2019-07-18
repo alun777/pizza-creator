@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import DetailsSection from './DetailsSection'
+import DetailsSection from './DetailsSection';
+import SizesSections from './SizesSection';
+import ToppingsSection from './ToppingsSection';
+import SummarySection from './SummarySection';
 
 class PizzaCreatorAppForm extends Component {
 
@@ -7,8 +10,10 @@ class PizzaCreatorAppForm extends Component {
     return (
       <section className="pizza__creator__app">
         <form action="">
-          <DetailsSection>
-          </DetailsSection>
+          <DetailsSection></DetailsSection>
+          <SizesSections></SizesSections>
+          <ToppingsSection></ToppingsSection>
+          <SummarySection></SummarySection>
         </form>
       </section>
     )
