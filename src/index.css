@@ -1,13 +1,77 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.pizza__creator__app {
+  padding: 0 2rem;
+}
+
+.section > h2 {
+  color: #6E7790;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 2rem 0;
+}
+
+.details__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem 2rem;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-row-gap: 0.5rem;
+}
+
+.detail > label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: bold;
+  color: #6E7790;
+}
+
+.detail__message {
+  font-size: small;
+}
+
+.detail > input {
+  border-radius: 2px;
+  border: 1px solid #d7d7e7;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem 1rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  grid-column: 1 / span 2;
+}
+
+.detail > input:hover,
+.detail > input:focus {
+  border-color: #1a98e1;
+}
+
+.detail > input:focus {
+  box-shadow: 0 0 0 2px #1a98e133;
+}
+
+.detail__error > .detail__message {
+  color: #f5222d;
+}
+
+.detail__error > input {
+  color: #f5222d;
+}
+
+.detail__error > input,
+.detail__error > input:hover,
+.detail__error > input:focus {
+  border-color: #f5222d;
+}
+
+.detail__error > input:focus {
+  box-shadow: 0 0 0 2px #f5222d33;
 }
