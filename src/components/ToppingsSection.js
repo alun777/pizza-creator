@@ -28,7 +28,7 @@ class ToppingsSection extends Component {
               <img src={bacon} alt="Bacon"></img>
               <span>Bacon</span>
             </div>
-            <div class="topping topping--active">
+            <div class="topping topping__active">
               <img src={basil} alt="Basil"></img>
               <span>Basil</span>
             </div>

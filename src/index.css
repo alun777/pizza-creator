@@ -147,7 +147,7 @@ body {
   color: #1a98e1;
 }
 
-.topping--active {
+.topping__active {
   background: #1a98e1;
   color: white!important;
 }
