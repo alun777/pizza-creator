@@ -4,28 +4,28 @@ class SummarySection extends Component {
 
   render(){
     return (
-    <section class="section summary">
+    <section className="section summary">
       <h2>Summary</h2>
-      <ul class="items">
-        <li class="item">
-          <span class="item__name">Pizza (Small)</span>
-          <span class="item__price">$9.99</span>
+      <ul className="items">
+        <li className="item">
+          <span className="item__name">Pizza (Small)</span>
+          <span className="item__price">$9.99</span>
         </li>
-        <li class="item">
-          <span class="item__name">Olive</span>
-          <span class="item__price">$0.99</span>
+        <li className="item">
+          <span className="item__name">Olive</span>
+          <span className="item__price">$0.99</span>
         </li>
-        <li class="item">
-          <span class="item__name">Peppers</span>
-          <span class="item__price">$0.99</span>
+        <li className="item">
+          <span className="item__name">Peppers</span>
+          <span className="item__price">$0.99</span>
         </li>
-        <li class="item">
-          <span class="item__name">Pepperoni</span>
-          <span class="item__price">$0.99</span>
+        <li className="item">
+          <span className="item__name">Pepperoni</span>
+          <span className="item__price">$0.99</span>
         </li>
       </ul>
       <hr/>
-      <p class="summary__total">
+      <p className="summary__total">
         <span>Total:</span>
         <span>$ 12.96</span>
       </p>
