@@ -5,7 +5,7 @@ class DetailsSection extends Component {
   render() {
     return (
       <section className="section details">
-        <h2>Enter your details</h2>
+        <h2 className="section__title">Enter your details</h2>
         <div className="details__container">
           <div className="detail detail__error">
             <label htmlFor="name">Name</label>

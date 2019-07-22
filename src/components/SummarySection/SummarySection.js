@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import SubmitButton from '../SubmitButton';
 
 class SummarySection extends Component {
 
   render(){
     return (
     <section className="section summary">
-      <h2>Summary</h2>
+      <h2 className="section__title">Summary</h2>
       <ul className="items">
         <li className="item">
           <span className="item__name">Pizza (Small)</span>
@@ -30,9 +31,7 @@ class SummarySection extends Component {
         <span>$ 12.96</span>
       </p>
       <p>
-        <button type="submit">
-          Place order
-        </button>
+        <SubmitButton />
       </p>
     </section>
     )

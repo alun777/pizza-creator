@@ -1,11 +1,12 @@
 import React from 'react';
 import './index.css';
-import PizzaCreatorAppForm from './components/PizzaCreatorAppForm';
+import PizzaCreatorAppForm from './components/PizzaCreatorAppForm/index';
 
-
-function App() {
+const App = () => {
   return (
+    <React.Fragment>
     <PizzaCreatorAppForm></PizzaCreatorAppForm>
+    </React.Fragment>
   );
 }
 

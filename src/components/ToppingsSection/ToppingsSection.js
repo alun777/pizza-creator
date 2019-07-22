@@ -92,6 +92,7 @@ class ToppingsSection extends Component {
     }
     this.handleToppingClick = this.handleToppingClick.bind(this);
   }
+  
 
   handleToppingClick(toppingListId) {
     const newList = [...this.state.toppingsList]
@@ -99,14 +100,25 @@ class ToppingsSection extends Component {
     this.setState({
       toppingsList: newList
     })
+    const newItemInSummary = this.updateSummaryList(toppingListId)
+    this.props.addToSummaryList(newItemInSummary)
   }
+
+  updateSummaryList(toppingListId){
+    if (this.state.toppingsList[toppingListId].isChosen) {
+      return toppingListId
+    } else {
+      return null
+    }
+  }
+
 
 
   render() {
     return (
       <React.Fragment>
         <section className="section toppings">
-          <h2>Choose your toppings</h2>
+          <h2 className="section__title">Choose your toppings</h2>
           <div className="toppings__container">
             {
               this.state.toppingsList.map((item) => {
