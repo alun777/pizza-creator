@@ -1,45 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SubmitButton from '../SubmitButton';
 
-class SummarySection extends Component {
-  constructor(props){
-    super(props);
-  }
-  
-  render() {
-    const { selectedToppings, selectedPizza, total } = this.props
-    return (
-      <section className="section summary">
-        <h2 className="section__title">Summary</h2>
-        <ul className="items">
-          <li className="item">
-            <span className="item__name">Pizza ({selectedPizza.name})</span>
-            <span className="item__price">${selectedPizza.price}</span>
-          </li>
-          {
-            selectedToppings.map(({ name, price, amount }) => {
-              return (
-                <li className="item">
-                  <span className="item__name">{name} * {amount}</span>
-                  <span className="item__price">${price}</span>
-                </li>
-              )
-            })
-          }
-        </ul>
-        <hr />
-        <p className="summary__total">
-          <span>Total:</span>
-          <span>
-            ${total}
-          </span>
-        </p>
-        <p>
-          <SubmitButton />
-        </p>
-      </section>
-    )
-  }
+
+const SummarySection =({ selectedToppings, selectedPizzaSize, total, selectedPizzaPrice }) => {
+  return (
+    <section className="section summary">
+      <h2 className="section__title">Summary</h2>
+      <ul className="items">
+        <li className="item">
+          <span className="item__name">{selectedPizzaSize? `Pizza (${selectedPizzaSize})` : ''}</span>
+          <span className="item__price">{selectedPizzaPrice? `$${selectedPizzaPrice}`: ''}</span>
+        </li>
+        {
+          selectedToppings.map(({ name, price, amount }) => {
+            return  amount > 0 && (
+              <li className="item" key={name}>
+                <span className="item__name">{name} * {amount}</span>
+                <span className="item__price">${(price*amount).toFixed(2)}</span>
+              </li>
+            )
+          })
+        }
+      </ul>
+      <hr />
+      <p className="summary__total">
+        <span>Total:</span>
+        <span>
+          ${total}
+        </span>
+      </p>
+      <p>
+        <SubmitButton />
+      </p>
+    </section>
+  )
 }
 
 export default SummarySection;

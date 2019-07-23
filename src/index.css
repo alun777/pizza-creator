@@ -125,6 +125,10 @@ body {
   border-color: rgba(0, 0, 0, 0.2)!important;
 }
 
+.size__opacity {
+  opacity: 0.5;
+}
+
 .toppings__container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -152,6 +156,10 @@ body {
   color: white!important;
 }
 
+.topping__active .topping__amount > button {
+  color: white;
+} 
+
 .topping > img {
   width: 50px;
   height: 100%;
@@ -167,7 +175,8 @@ body {
 
 .topping__amount {
   display: grid;
-  grid-template-columns: 2rem auto 2rem;
+  grid-template-columns: 2rem 1.5rem 2rem;
+  text-align: center;
   height: 100%;
   align-items: center;
   grid-gap: 0.5rem;
