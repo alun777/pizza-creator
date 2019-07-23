@@ -26,7 +26,7 @@ class PizzaCreatorAppForm extends Component {
           <DetailsSection></DetailsSection>
           <SizesSections></SizesSections>
           <ToppingsSection addToSummaryList={this.addToSummaryList}></ToppingsSection>
-          <SummarySection></SummarySection>
+          <SummarySection selectedToppings={[]} selectedPizza={{}} total={''}></SummarySection>
         </form>
       </section>
     )

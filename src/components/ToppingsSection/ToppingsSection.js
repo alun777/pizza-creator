@@ -121,17 +121,21 @@ class ToppingsSection extends Component {
           <h2 className="section__title">Choose your toppings</h2>
           <div className="toppings__container">
             {
-              this.state.toppingsList.map((item) => {
-                const toppingListId = item.id
-                const toppingActiveClassName = item.isChosen ? "topping topping__active" : "topping"
+              this.state.toppingsList.map(({ id, srcImg, name, isChosen }) => {
+                const toppingActiveClassName = isChosen ? "topping topping__active" : "topping"
                 return (
                   <div
                     className={toppingActiveClassName}
-                    key={toppingListId}
-                    onClick={() => { this.handleToppingClick(toppingListId) }}
+                    key={id}
+                    onClick={() => { this.handleToppingClick(id) }}
                   >
-                    <img src={item.srcImg} alt={item.name}></img>
-                    <span>{item.name}</span>
+                    <img src={srcImg} alt={name}></img>
+                    <span>{name}</span>
+                    <div className="topping__amount">
+                      <button type="button">-</button>
+                      <span>0</span>
+                      <button type="button">+</button>
+                    </div>
                   </div>
                 )
               })

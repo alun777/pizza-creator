@@ -17,7 +17,7 @@ class SizesSections extends Component {
 
   handleSelectedSize(size) {
     switch (size) {
-      case 'small':
+      case 'Small':
         this.setState(() => {
           const newSizeSelected = {
             selectSmall: true,
@@ -29,7 +29,7 @@ class SizesSections extends Component {
           }
         })
         break;
-      case 'medium':
+      case 'Medium':
         this.setState(() => {
           const newSizeSelected = {
             selectSmall: false,
@@ -41,7 +41,7 @@ class SizesSections extends Component {
           }
         })
         break;
-      case 'large':
+      case 'Large':
         this.setState(() => {
           const newSizeSelected = {
             selectSmall: false,
@@ -63,37 +63,32 @@ class SizesSections extends Component {
       <section className="section sizes">
         <h2 className="section__title">Select your size</h2>
         <div className="sizes__container">
-          <div
-            className={this.state.sizeSelected.selectSmall ? "size size__small size__active" : "size size__small"}
-            onClick={() => { this.handleSelectedSize('small') }}
-          >
-            <img src={pizzaImg} alt="Small" />
-            <div>
-              Small
-            <br />
-              <span className="size__price">$9.99</span>
-            </div>
-          </div>
-          <div className={this.state.sizeSelected.selectMedium ? "size size__medium size__active" : "size size__medium"}
-            onClick={() => { this.handleSelectedSize('medium') }}
-          >
-            <img src={pizzaImg} alt="Medium" />
-            <div>
-              Medium
-            <br />
-              <span className="size__price">$10.99</span>
-            </div>
-          </div>
-          <div className={this.state.sizeSelected.selectLarge ? "size size__large size__active" : "size size__large"}
-            onClick={() => { this.handleSelectedSize('large') }}
-          >
-            <img src={pizzaImg} alt="Large" />
-            <div>
-              Large
-            <br />
-              <span className="size__price">$11.99</span>
-            </div>
-          </div>
+          {[{
+            name: 'Small',
+            price: 9.99
+          }, {
+            name: 'Medium',
+            price: 10.99
+          }, {
+            name: 'Large',
+            price: 11.99
+          }].map(({ name, price }) => {
+            return (
+              <div
+                className={this.state.sizeSelected['select' + name] ? `size size__${name} size__active` : `size size__${name}`}
+                onClick={() => { this.handleSelectedSize(name) }}
+                key={name}
+              >
+                <img src={pizzaImg} alt={name} />
+                <div>
+                  {name}
+                <br />
+                <span className="size__price">${price}</span>
+                </div>
+              </div>
+            )
+          })
+          }
         </div>
       </section>
     )
