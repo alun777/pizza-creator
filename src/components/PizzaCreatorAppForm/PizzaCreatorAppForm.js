@@ -9,9 +9,19 @@ class PizzaCreatorAppForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      listPizzaSize:[{
+        name: 'Small',
+        price: 9.99
+      }, {
+        name: 'Medium',
+        price: 10.99
+      }, {
+        name: 'Large',
+        price: 11.99
+      }],
       selectedToppings: [],
       selectedPizzaSize: '',
-      selectedPizzaPrice: ''
+      selectedPizzaPrice: '',
     }
     this.addSelectToppingAmount = this.addSelectToppingAmount.bind(this)
     this.minusSelectedToppingAmount = this.minusSelectedToppingAmount.bind(this)
@@ -49,11 +59,11 @@ class PizzaCreatorAppForm extends Component {
   }
 
   addSelectToppingAmount(name, price, value = 1) {
-    this.updateSelectedToppingAmount(name, price, value)
+    this.updateSelectedToppingAmount(name, price, value);
   }
 
   minusSelectedToppingAmount(name, price, value = 1) {
-    this.updateSelectedToppingAmount(name, price, -value)
+    this.updateSelectedToppingAmount(name, price, -value);
   }
 
   handleSelectedSize(name, price) {
@@ -71,13 +81,13 @@ class PizzaCreatorAppForm extends Component {
       totalToppingPrice = totalToppingPrice + selectedToppings[i].price * selectedToppings[i].amount
     }
 
-    const total = parseFloat(selectedPizzaPrice + totalToppingPrice).toFixed(2);
+    const summaryTotalPrice = parseFloat(selectedPizzaPrice + totalToppingPrice).toFixed(2);
 
-    return total
+    return summaryTotalPrice
   }
 
   render() {
-    const { selectedToppings, selectedPizzaSize, selectedPizzaPrice } = this.state
+    const { selectedToppings, selectedPizzaSize, selectedPizzaPrice, listPizzaSize } = this.state
     return (
       <section className="pizza__creator__app">
         <form action="">
@@ -85,6 +95,7 @@ class PizzaCreatorAppForm extends Component {
           <SizesSections
             selectedPizzaSize={selectedPizzaSize}
             handleSelectedSize={this.handleSelectedSize}
+            listPizzaSize={listPizzaSize}
           />
           <ToppingsSection
             selectedToppings={selectedToppings}
@@ -95,7 +106,7 @@ class PizzaCreatorAppForm extends Component {
             selectedToppings={selectedToppings}
             selectedPizzaSize={selectedPizzaSize}
             selectedPizzaPrice={selectedPizzaPrice}
-            total={this.getSummaryTotal()}
+            summaryTotalPrice={this.getSummaryTotal()}
           />
         </form>
       </section>

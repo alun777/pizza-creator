@@ -1,8 +1,8 @@
 import React from 'react';
 import SubmitButton from '../SubmitButton';
 
+const SummarySection =({ selectedToppings, selectedPizzaSize, summaryTotalPrice, selectedPizzaPrice }) => {
 
-const SummarySection =({ selectedToppings, selectedPizzaSize, total, selectedPizzaPrice }) => {
   return (
     <section className="section summary">
       <h2 className="section__title">Summary</h2>
@@ -26,7 +26,7 @@ const SummarySection =({ selectedToppings, selectedPizzaSize, total, selectedPiz
       <p className="summary__total">
         <span>Total:</span>
         <span>
-          ${total}
+          ${summaryTotalPrice}
         </span>
       </p>
       <p>

@@ -33,7 +33,6 @@ class ToppingList extends Component {
     return amount;
   }
 
-
   render() {
     const { srcImg, name, onAmountAdd, onAmountMinus, price } = this.props
     return (
