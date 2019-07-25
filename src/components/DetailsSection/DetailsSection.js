@@ -1,30 +1,45 @@
 import React, { Component } from 'react';
+import InputDetails from '../InputDetails/index';
 
 class DetailsSection extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
   render() {
+    const { details, handleInputChange } =this.props;
+
     return (
       <section className="section details">
         <h2 className="section__title">Enter your details</h2>
         <div className="details__container">
           {[{
-            name: "Name"
+            label: 'Name',
+            name: 'name'
           }, {
-            name: "Email"
+            label: 'Email',
+            name: 'email'
           }, {
-            name: "Confirm Email"
+            label: 'Confirm Email',
+            name: 'confirmEmail'
           }, {
-            name: "Address"
+            label: 'Address',
+            name: 'address'
           }, {
-            name: "Postcode"
+            label: 'Postcode',
+            name: 'postcode'
           }, {
-            name: "Contact Number"
-          }].map(({ name }) => (
-            <div className="detail" key={name}>
-              <label htmlFor={name}>{name}</label>
-              {/* <span className="detail__message">Please Enter Name</span> */}
-              <input type="text" name={name} id={name}></input>
-            </div>
+            label: 'Contact Number',
+            name: 'contactNumber'
+          }].map(({ label, name }) => (
+            <InputDetails
+              key={name} 
+              label={label}
+              name={name}
+              details={details}
+              handleInputChange={handleInputChange}
+            />
           ))
           }
         </div>

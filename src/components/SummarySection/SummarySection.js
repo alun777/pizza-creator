@@ -1,7 +1,7 @@
 import React from 'react';
 import SubmitButton from '../SubmitButton';
 
-const SummarySection =({ selectedToppings, selectedPizzaSize, summaryTotalPrice, selectedPizzaPrice }) => {
+const SummarySection =({ selectedToppings, selectedPizzaSize, summaryTotalPrice, selectedPizzaPrice, onAmountAdd, onAmountMinus }) => {
 
   return (
     <section className="section summary">
@@ -15,7 +15,14 @@ const SummarySection =({ selectedToppings, selectedPizzaSize, summaryTotalPrice,
           selectedToppings.map(({ name, price, amount }) => {
             return  amount > 0 && (
               <li className="item" key={name}>
-                <span className="item__name">{name} * {amount}</span>
+                <div className="item__name">
+                  <span>{name}</span>
+                  <div className="item__amount">
+                    <button type="button" onClick={()=>onAmountMinus(name)}>-</button>
+                    <span>{amount}</span>
+                    <button type="button" onClick={()=>onAmountAdd(name)}>+</button>
+                  </div>
+                </div>
                 <span className="item__price">${(price*amount).toFixed(2)}</span>
               </li>
             )

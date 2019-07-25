@@ -202,6 +202,33 @@ body {
   padding: 0;
 }
 
+.item__name {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0.5rem;
+  align-items: center;
+  justify-items: start;
+}
+
+.item__amount {
+  display: grid;
+  grid-template-columns: auto 1.5rem auto;
+  text-align: center;
+  align-items: center;
+  grid-gap: 0.2rem;
+}
+
+.item__amount > button {
+  --size: 1.4rem;
+  border: 0;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 50%;
+  height: var(--size);
+  width: var(--size);
+}
+
 button[type="submit"] {
   width: 100%;
   background: #98C550;

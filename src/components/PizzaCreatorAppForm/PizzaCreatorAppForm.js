@@ -9,7 +9,7 @@ class PizzaCreatorAppForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listPizzaSize:[{
+      listPizzaSize: [{
         name: 'Small',
         price: 9.99
       }, {
@@ -22,10 +22,20 @@ class PizzaCreatorAppForm extends Component {
       selectedToppings: [],
       selectedPizzaSize: '',
       selectedPizzaPrice: '',
+      details: {
+        name: '',
+        email: '',
+        confirmEmail: '',
+        address: '',
+        postcode: '',
+        contactNumber: ''
+      }
+
     }
     this.addSelectToppingAmount = this.addSelectToppingAmount.bind(this)
     this.minusSelectedToppingAmount = this.minusSelectedToppingAmount.bind(this)
     this.handleSelectedSize = this.handleSelectedSize.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   setSelectedTopping(newList) {
@@ -39,7 +49,6 @@ class PizzaCreatorAppForm extends Component {
     const selectedTopping = selectedToppings.find(({ name }) => {
       return name === toppingName;
     })
-
     const amount = selectedTopping ? selectedTopping.amount : 0;
     const newAmount = (amount + delta >= 0) ? amount + delta : 0;
 
@@ -58,17 +67,17 @@ class PizzaCreatorAppForm extends Component {
     }
   }
 
-  addSelectToppingAmount(name, price, value = 1) {
-    this.updateSelectedToppingAmount(name, price, value);
+  addSelectToppingAmount(toppingName, price, value = 1) {
+    this.updateSelectedToppingAmount(toppingName, price, value);
   }
 
-  minusSelectedToppingAmount(name, price, value = 1) {
-    this.updateSelectedToppingAmount(name, price, -value);
+  minusSelectedToppingAmount(toppingName, price, value = 1) {
+    this.updateSelectedToppingAmount(toppingName, price, -value);
   }
 
-  handleSelectedSize(name, price) {
+  handleSelectedSize(toppingName, price) {
     this.setState({
-      selectedPizzaSize: name,
+      selectedPizzaSize: toppingName,
       selectedPizzaPrice: price
     })
   }
@@ -86,12 +95,23 @@ class PizzaCreatorAppForm extends Component {
     return summaryTotalPrice
   }
 
+  handleInputChange(event, name) {
+    const newDetails = {...this.state.details, [name]:event.target.value}
+    this.setState({
+      details: newDetails
+    })
+
+  }
+
   render() {
-    const { selectedToppings, selectedPizzaSize, selectedPizzaPrice, listPizzaSize } = this.state
+    const { selectedToppings, selectedPizzaSize, selectedPizzaPrice, listPizzaSize, details } = this.state
     return (
       <section className="pizza__creator__app">
         <form action="">
-          <DetailsSection />
+          <DetailsSection 
+            details={details}
+            handleInputChange={this.handleInputChange}
+          />
           <SizesSections
             selectedPizzaSize={selectedPizzaSize}
             handleSelectedSize={this.handleSelectedSize}
@@ -107,6 +127,8 @@ class PizzaCreatorAppForm extends Component {
             selectedPizzaSize={selectedPizzaSize}
             selectedPizzaPrice={selectedPizzaPrice}
             summaryTotalPrice={this.getSummaryTotal()}
+            onAmountAdd={this.addSelectToppingAmount}
+            onAmountMinus={this.minusSelectedToppingAmount}
           />
         </form>
       </section>
