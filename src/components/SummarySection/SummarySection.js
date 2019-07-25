@@ -1,7 +1,15 @@
 import React from 'react';
 import SubmitButton from '../SubmitButton';
 
-const SummarySection =({ selectedToppings, selectedPizzaSize, summaryTotalPrice, selectedPizzaPrice, onAmountAdd, onAmountMinus }) => {
+const SummarySection =({ 
+  selectedToppings, 
+  selectedPizzaSize, 
+  summaryTotalPrice, 
+  selectedPizzaPrice, 
+  onAmountAdd, 
+  onAmountMinus,
+  onClickPlaceOrder
+ }) => {
 
   return (
     <section className="section summary">
@@ -37,7 +45,7 @@ const SummarySection =({ selectedToppings, selectedPizzaSize, summaryTotalPrice,
         </span>
       </p>
       <p>
-        <SubmitButton />
+        <SubmitButton onClickPlaceOrder={onClickPlaceOrder}/>
       </p>
     </section>
   )

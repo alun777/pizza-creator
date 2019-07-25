@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SubmitButton = ()=> {
+const SubmitButton = ({ onClickPlaceOrder })=> {
   return (
     <button 
       type="submit" 
       className="submit"
-      onClick={(event)=>{event.preventDefault()}}
+      onClick={(event)=>{event.preventDefault(); onClickPlaceOrder()}}
     >
         Place order
     </button>

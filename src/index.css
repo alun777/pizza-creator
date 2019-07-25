@@ -245,3 +245,31 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background: #98C550E6;
 }
+
+.message {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  box-shadow: 0 0 0.5rem 1px rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  display:grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0.5rem;
+  align-items: center;
+  transition: all 0.5s ease-in;
+}
+
+.message__error {
+  opacity: 1;
+}
+
+.message__no__error {
+  opacity: 0;
+}
+
+.message > img {
+  height: 1.6rem;
+}

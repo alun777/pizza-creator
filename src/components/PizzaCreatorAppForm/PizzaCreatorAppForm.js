@@ -4,6 +4,7 @@ import SizesSections from '../SizesSection/index';
 import ToppingsSection from '../ToppingsSection/index';
 import SummarySection from '../SummarySection/index';
 import DetailsSection from '../DetailsSection/index';
+import SubmitErrorPrompt from '../SubmitErrorPrompt/index';
 
 class PizzaCreatorAppForm extends Component {
   constructor(props) {
@@ -29,13 +30,15 @@ class PizzaCreatorAppForm extends Component {
         address: '',
         postcode: '',
         contactNumber: ''
-      }
+      },
+      placeOrderError: false
 
     }
     this.addSelectToppingAmount = this.addSelectToppingAmount.bind(this)
     this.minusSelectedToppingAmount = this.minusSelectedToppingAmount.bind(this)
     this.handleSelectedSize = this.handleSelectedSize.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.onClickPlaceOrder = this.onClickPlaceOrder.bind(this)
   }
 
   setSelectedTopping(newList) {
@@ -96,19 +99,34 @@ class PizzaCreatorAppForm extends Component {
   }
 
   handleInputChange(event, name) {
-    const newDetails = {...this.state.details, [name]:event.target.value}
+    const newDetails = { ...this.state.details, [name]: event.target.value }
     this.setState({
       details: newDetails
     })
+  }
 
+  onClickPlaceOrder() {
+    if (this.state.selectedToppings.length === 0) {
+      this.setState({
+        placeOrderError: true
+      });
+      setTimeout(() => {
+        this.setState({
+          placeOrderError: false
+        })
+      }, 3000)
+    }
   }
 
   render() {
-    const { selectedToppings, selectedPizzaSize, selectedPizzaPrice, listPizzaSize, details } = this.state
+    const { selectedToppings, selectedPizzaSize, selectedPizzaPrice, listPizzaSize, details, placeOrderError } = this.state
     return (
       <section className="pizza__creator__app">
         <form action="">
-          <DetailsSection 
+          <SubmitErrorPrompt placeOrderError={placeOrderError}>
+            Please select at least one topping to place order!
+          </SubmitErrorPrompt>
+          <DetailsSection
             details={details}
             handleInputChange={this.handleInputChange}
           />
@@ -129,6 +147,7 @@ class PizzaCreatorAppForm extends Component {
             summaryTotalPrice={this.getSummaryTotal()}
             onAmountAdd={this.addSelectToppingAmount}
             onAmountMinus={this.minusSelectedToppingAmount}
+            onClickPlaceOrder={this.onClickPlaceOrder}
           />
         </form>
       </section>
