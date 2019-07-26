@@ -24,6 +24,7 @@ export const handleInputChangeAction = (event, name) => ({
   name
 })
 
-export const handleShowErrorAction = () => ({
-  type: CHANGE_SHOW_ERROR
+export const handleShowErrorAction = (name) => ({
+  type: CHANGE_SHOW_ERROR,
+  name
 })

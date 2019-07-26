@@ -27,6 +27,14 @@ const defaultState = {
     postcode: '',
     contactNumber: ''
   },
+  detailsError: {
+    name: false,
+    email: false,
+    confirmEmail: false,
+    address: false,
+    postcode: false,
+    contactNumber: false,
+  },
   placeOrderError: false,
   showError: false,
   toppingsList: [{
@@ -108,7 +116,7 @@ export default (state = defaultState, action) => {
     return newState
   } else if (action.type === CHANGE_SHOW_ERROR) {
     const newState = JSON.parse(JSON.stringify(state))
-    newState.showError = true
+    newState.detailsError[action.name] = true
     return newState
   }
   return state

@@ -11,36 +11,27 @@ class InputDetails extends Component{
     super(props);
     this.state = store.getState();
 
-    // this.state={
-    //   showError: false
-    // };
+ 
 
     this.handleShowError = this.handleShowError.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
-
     store.subscribe(this.handleStoreChange);
 
   }
 
-  handleStoreChange (){
-    console.log(this.state.showError)
-
-    this.setState = (store.getState())
-    console.log(this.state.showError)
+  handleStoreChange() {
+    this.setState(store.getState())
   }
 
-  handleShowError(){
-    const action = handleShowErrorAction()
+  handleShowError(name){
+    const action = handleShowErrorAction(name)
     store.dispatch(action)
-    // this.setState({
-    //   showError: true
-    // });
   }
 
   render(){
     const { label, name, details, handleInputChange } = this.props;
-    const { showError } = this.state;
-    const errorClassName = (showError && !details[name]) ?  'detail__error': '';
+    const { detailsError } = this.state;
+    const errorClassName = (detailsError[name] && !details[name]) ?  'detail__error': '';
 
     return(
       <div className={`detail ${errorClassName}`}>
@@ -55,7 +46,7 @@ class InputDetails extends Component{
         id={label}
         value={details[name]}
         onChange={(event) => handleInputChange(event, name)}
-        onBlur={this.handleShowError}
+        onFocus={()=>this.handleShowError(name)}
       />
     </div>
     )
