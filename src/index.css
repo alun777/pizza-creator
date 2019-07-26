@@ -263,14 +263,14 @@ button[type="submit"]:hover {
 }
 
 .message__error {
-  animation: show-item 1s ease-in;
+  animation: show-error 1s ease-in;
 }
 
 .message__no__error {
   opacity: 0;
 }
 
-@keyframes show-item {
+@keyframes show-error {
   0% {
     opacity: 0;
   }
