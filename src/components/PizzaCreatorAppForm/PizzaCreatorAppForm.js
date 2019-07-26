@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import store from '../../store/index'
 
 import SizesSections from '../SizesSection/index';
 import ToppingsSection from '../ToppingsSection/index';
@@ -6,45 +7,36 @@ import SummarySection from '../SummarySection/index';
 import DetailsSection from '../DetailsSection/index';
 import SubmitErrorPrompt from '../SubmitErrorPrompt/index';
 
+import { 
+  setSelectedToppingAction,
+  handleSelectedSizeAction,
+  handleInputChangeAction
+ } from '../../store/actionCreators'
+
+
 class PizzaCreatorAppForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      listPizzaSize: [{
-        name: 'Small',
-        price: 9.99
-      }, {
-        name: 'Medium',
-        price: 10.99
-      }, {
-        name: 'Large',
-        price: 11.99
-      }],
-      selectedToppings: [],
-      selectedPizzaSize: '',
-      selectedPizzaPrice: '',
-      details: {
-        name: '',
-        email: '',
-        confirmEmail: '',
-        address: '',
-        postcode: '',
-        contactNumber: ''
-      },
-      placeOrderError: false
+    this.state = store.getState();
 
-    }
     this.addSelectToppingAmount = this.addSelectToppingAmount.bind(this)
     this.minusSelectedToppingAmount = this.minusSelectedToppingAmount.bind(this)
     this.handleSelectedSize = this.handleSelectedSize.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.onClickPlaceOrder = this.onClickPlaceOrder.bind(this)
+    this.handleStoreChange = this.handleStoreChange.bind(this)
+
+    store.subscribe(this.handleStoreChange);
+
+  }
+
+  handleStoreChange() {
+    this.setState(store.getState())
   }
 
   setSelectedTopping(newList) {
-    this.setState({
-      selectedToppings: newList
-    })
+    const action = setSelectedToppingAction(newList);
+    store.dispatch(action);
   }
 
   updateSelectedToppingAmount(toppingName, price, delta) {
@@ -79,10 +71,8 @@ class PizzaCreatorAppForm extends Component {
   }
 
   handleSelectedSize(toppingName, price) {
-    this.setState({
-      selectedPizzaSize: toppingName,
-      selectedPizzaPrice: price
-    })
+    const action = handleSelectedSizeAction(toppingName, price);
+    store.dispatch(action);
   }
 
   getSummaryTotal() {
@@ -99,6 +89,9 @@ class PizzaCreatorAppForm extends Component {
   }
 
   handleInputChange(event, name) {
+    const action = handleInputChangeAction(event, name)
+    store.dispatch(action)
+
     const newDetails = { ...this.state.details, [name]: event.target.value }
     this.setState({
       details: newDetails
@@ -106,16 +99,16 @@ class PizzaCreatorAppForm extends Component {
   }
 
   onClickPlaceOrder() {
-    if (this.state.selectedToppings.length === 0) {
-      this.setState({
-        placeOrderError: true
-      });
-      setTimeout(() => {
-        this.setState({
-          placeOrderError: false
-        })
-      }, 3000)
-    }
+    // if (this.state.selectedToppings.length === 0) {
+    //   this.setState({
+    //     placeOrderError: true
+    //   });
+    //   setTimeout(() => {
+    //     this.setState({
+    //       placeOrderError: false
+    //     })
+    //   }, 3000)
+    // }
   }
 
   render() {

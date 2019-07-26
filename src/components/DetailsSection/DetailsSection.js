@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import InputDetails from '../InputDetails/index';
 
 class DetailsSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
+  
   render() {
     const { details, handleInputChange } =this.props;
 
