@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Refactoring Description
+The project is refactored into different branches as explained below:
+
+#### branch: react
+The project was developed by React fiber 
+
 ## Available Scripts
 
 In the project directory, you can run:

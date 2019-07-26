@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 class InputDetails extends Component{
   constructor(props){
@@ -35,13 +37,16 @@ class InputDetails extends Component{
         value={details[name]}
         onChange={(event) => handleInputChange(event, name)}
         onBlur={this.handleShowError}
-      >
-      </input>
+      />
     </div>
     )
   }
 }
 
+InputDetails.propTypes = {
+  handleInputChange: PropTypes.func.isRequired,
+  details: PropTypes.object,
+}
 
 
 export default InputDetails;
