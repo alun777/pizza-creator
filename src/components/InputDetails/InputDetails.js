@@ -11,8 +11,6 @@ class InputDetails extends Component{
     super(props);
     this.state = store.getState();
 
- 
-
     this.handleShowError = this.handleShowError.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
     store.subscribe(this.handleStoreChange);
@@ -46,7 +44,7 @@ class InputDetails extends Component{
         id={label}
         value={details[name]}
         onChange={(event) => handleInputChange(event, name)}
-        onFocus={()=>this.handleShowError(name)}
+        onBlur={()=>this.handleShowError(name)}
       />
     </div>
     )

@@ -2,7 +2,8 @@ import {
   CHANGE_SELECTEDTOPPINGS,
   CHANGE_PIZZASIZE,
   CHANGE_DETAILS,
-  CHANGE_SHOW_ERROR
+  CHANGE_SHOW_ERROR,
+  CHANGE_PLACE_ORDER_ERROR
 } from './actionTypes';
 
 const defaultState = {
@@ -117,6 +118,10 @@ export default (state = defaultState, action) => {
   } else if (action.type === CHANGE_SHOW_ERROR) {
     const newState = JSON.parse(JSON.stringify(state))
     newState.detailsError[action.name] = true
+    return newState
+  } else if (action.type === CHANGE_PLACE_ORDER_ERROR) {
+    const newState = JSON.parse(JSON.stringify(state))
+    newState.placeOrderError = action.placeOrderError
     return newState
   }
   return state

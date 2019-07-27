@@ -10,7 +10,8 @@ import SubmitErrorPrompt from '../SubmitErrorPrompt/index';
 import { 
   setSelectedToppingAction,
   handleSelectedSizeAction,
-  handleInputChangeAction
+  handleInputChangeAction,
+  onClickPlaceOrderAction
  } from '../../store/actionCreators'
 
 
@@ -27,7 +28,6 @@ class PizzaCreatorAppForm extends Component {
     this.handleStoreChange = this.handleStoreChange.bind(this)
 
     store.subscribe(this.handleStoreChange);
-
   }
 
   handleStoreChange() {
@@ -99,6 +99,12 @@ class PizzaCreatorAppForm extends Component {
   }
 
   onClickPlaceOrder() {
+    if (this.state.selectedToppings.length === 0) {
+      const action = onClickPlaceOrderAction()
+      store.dispatch(action)
+    }
+  }
+
     // if (this.state.selectedToppings.length === 0) {
     //   this.setState({
     //     placeOrderError: true
@@ -109,7 +115,7 @@ class PizzaCreatorAppForm extends Component {
     //     })
     //   }, 3000)
     // }
-  }
+  
 
   render() {
     const { selectedToppings, selectedPizzaSize, selectedPizzaPrice, listPizzaSize, details, placeOrderError } = this.state
