@@ -6,8 +6,6 @@ import {
   CHANGE_PLACE_ORDER_ERROR
 } from './actionTypes';
 
-
-
 export const setSelectedToppingAction = (newList) => ({
   type: CHANGE_SELECTEDTOPPINGS,
   newList
