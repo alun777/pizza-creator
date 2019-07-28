@@ -1,53 +1,45 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import store from '../../store/index'
-import { 
-  handleShowErrorAction
- } from '../../store/actionCreators'
+import { connect } from 'react-redux';
+import { actionCreators } from './store/index';
 
+const InputDetails = (props)=> {
 
-class InputDetails extends Component{
-  constructor(props){
-    super(props);
-    this.state = store.getState();
+  const { label, name, details, handleInputChange, handleShowError } = props;
+  const { detailsError } = props;
+  const errorClassName = (detailsError[name] && !details[name]) ?  'detail__error': '';
 
-    this.handleShowError = this.handleShowError.bind(this);
-    this.handleStoreChange = this.handleStoreChange.bind(this);
-    store.subscribe(this.handleStoreChange);
+  return (
+    <div className={`detail ${errorClassName}`}>
+    <label htmlFor={label}>{label}</label>
+    {
+      errorClassName &&
+      <span className="detail__message">{`Please Enter ${label}`}</span>
+    }
+    <input
+      type="text"
+      name={label}
+      id={label}
+      value={details[name]}
+      onChange={(event) => handleInputChange(event, name)}
+      onBlur={()=>handleShowError(name)}
+    />
+  </div>
+  )
+}
 
+const mapStateToProps =(state)=>{
+  return{
+    detailsError: state.InputDetails.detailsError,
   }
+}
 
-  handleStoreChange() {
-    this.setState(store.getState())
-  }
-
-  handleShowError(name){
-    const action = handleShowErrorAction(name)
-    store.dispatch(action)
-  }
-
-  render(){
-    const { label, name, details, handleInputChange } = this.props;
-    const { detailsError } = this.state;
-    const errorClassName = (detailsError[name] && !details[name]) ?  'detail__error': '';
-
-    return(
-      <div className={`detail ${errorClassName}`}>
-      <label htmlFor={label}>{label}</label>
-      {
-        errorClassName &&
-        <span className="detail__message">{`Please Enter ${label}`}</span>
-      }
-      <input
-        type="text"
-        name={label}
-        id={label}
-        value={details[name]}
-        onChange={(event) => handleInputChange(event, name)}
-        onBlur={()=>this.handleShowError(name)}
-      />
-    </div>
-    )
+const mapDispatchToProps =(dispatch)=>{
+  return{
+    handleShowError(name){
+      const action = actionCreators.handleShowErrorAction(name)
+      dispatch(action)
+    },
   }
 }
 
@@ -56,4 +48,4 @@ InputDetails.propTypes = {
   details: PropTypes.object,
 }
 
-export default InputDetails;
+export default connect(mapStateToProps, mapDispatchToProps)(InputDetails);
