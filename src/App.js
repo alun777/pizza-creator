@@ -1,8 +1,10 @@
 import React from 'react';
 import './index.css';
-import PizzaCreatorAppForm from './components/PizzaCreatorAppForm/index';
-import { Provider } from 'react-redux';
 import store from './store/index';
+import { Provider } from 'react-redux';
+import PizzaCreatorAppForm from './components/PizzaCreatorAppForm/index';
+
+
 
 const App = () => {
   return (

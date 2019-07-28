@@ -6,6 +6,7 @@ import ToppingsSection from '../ToppingsSection/index';
 import SummarySection from '../SummarySection/index';
 import DetailsSection from '../DetailsSection/index';
 import SubmitErrorPrompt from '../SubmitErrorPrompt/index';
+import BackTop from '../BackTop/index';
 
 import { actionCreators } from './store/index';
 
@@ -91,6 +92,7 @@ class PizzaCreatorAppForm extends Component {
             onAmountMinus={this.minusSelectedToppingAmount}
             onClickPlaceOrder={()=>{this.props.onClickPlaceOrder(selectedToppings)}}
           />
+          <BackTop />
         </form>
       </section>
     )

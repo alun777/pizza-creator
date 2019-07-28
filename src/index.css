@@ -4,14 +4,14 @@ body {
 }
 
 .pizza__creator__app {
-  padding: 0 2rem;
+  padding: 0 10rem;
 }
 
 .section > .section__title {
   color: #6E7790;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
-  margin: 2rem 0;
+  margin: 3rem 0 2rem;
 }
 
 .details__container {
@@ -284,4 +284,45 @@ button[type="submit"]:hover {
 
 .message > img {
   height: 1.6rem;
+}
+
+.backTop {
+  position: fixed;
+  right: 2rem;
+  bottom: 6rem;
+  cursor: pointer;
+  border: 2px solid #b0b0b0;
+  border-radius: 8px;
+  outline: 0;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1320234 */
+  src: url('//at.alicdn.com/t/font_1320234_qdh5mqv6j9i.eot');
+  src: url('//at.alicdn.com/t/font_1320234_qdh5mqv6j9i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1320234_qdh5mqv6j9i.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1320234_qdh5mqv6j9i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1320234_qdh5mqv6j9i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1320234_qdh5mqv6j9i.svg#iconfont') format('svg');
+}
+
+.backTop__iconfont{
+  font-family:"iconfont" !important;
+  font-size:24px;
+  font-style:normal;
+  color: #8e8e8e;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.backTop__show {
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+
+.backTop__hide {
+  opacity: 0;
+  transition: all 0.5s ease-in;
+
 }
