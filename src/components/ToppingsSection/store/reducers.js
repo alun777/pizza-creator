@@ -1,4 +1,6 @@
-const defaultState = {
+import { fromJS } from 'immutable';
+
+const defaultState = fromJS({
   toppingsList: [{
     id: 0,
     name: 'Anchovy',
@@ -60,7 +62,7 @@ const defaultState = {
     srcImg: 'assets/toppings/sweetcorn.svg',
     price: 0.99
   }]
-}
+})
 
 export default (state = defaultState) => {
   return state

@@ -30,7 +30,7 @@ const InputDetails = (props)=> {
 
 const mapStateToProps =(state)=>{
   return{
-    detailsError: state.InputDetails.detailsError,
+    detailsError: state.getIn(['InputDetails', 'detailsError']).toJS()
   }
 }
 

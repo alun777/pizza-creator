@@ -1,8 +1,9 @@
 import { constants } from './index';
+import { fromJS } from 'immutable';
 
 export const setSelectedToppingAction = (newList) => ({
   type: constants.CHANGE_SELECTEDTOPPINGS,
-  newList
+  newList: fromJS(newList)
 });
 
 export const handleSelectedSizeAction = (toppingName, price) => ({

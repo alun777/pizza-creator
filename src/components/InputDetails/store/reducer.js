@@ -1,6 +1,8 @@
 import { constants } from './index';
+import { fromJS } from 'immutable';
 
-const defaultState = {
+
+const defaultState = fromJS({
   detailsError: {
     name: false,
     email: false,
@@ -9,14 +11,13 @@ const defaultState = {
     postcode: false,
     contactNumber: false,
   },
-}
-
+})
 
 export default (state = defaultState, action) => {
-  if (action.type === constants.CHANGE_SHOW_ERROR) {
-    const newState = JSON.parse(JSON.stringify(state))
-    newState.detailsError[action.name] = true
-    return newState
+  switch(action.type) {
+    case constants.CHANGE_SHOW_ERROR:
+      return state.setIn(['detailsError', `${action.name}`], true)
+    default:
+      return state
   }
-  return state
 }

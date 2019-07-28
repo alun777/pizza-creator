@@ -99,12 +99,12 @@ class PizzaCreatorAppForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    selectedToppings: state.PizzaCreatorAppForm.selectedToppings,
-    selectedPizzaSize: state.PizzaCreatorAppForm.selectedPizzaSize,
-    selectedPizzaPrice: state.PizzaCreatorAppForm.selectedPizzaPrice,
-    listPizzaSize: state.PizzaCreatorAppForm.listPizzaSize,
-    details: state.PizzaCreatorAppForm.details,
-    placeOrderError: state.PizzaCreatorAppForm.placeOrderError
+    selectedToppings: state.getIn(['PizzaCreatorAppForm', 'selectedToppings']).toJS(),
+    selectedPizzaSize: state.getIn(['PizzaCreatorAppForm', 'selectedPizzaSize']),
+    selectedPizzaPrice: state.getIn(['PizzaCreatorAppForm', 'selectedPizzaPrice']),
+    listPizzaSize: state.getIn(['PizzaCreatorAppForm', 'listPizzaSize']).toJS(),
+    details: state.getIn(['PizzaCreatorAppForm', 'details']).toJS(),
+    placeOrderError: state.getIn(['PizzaCreatorAppForm', 'placeOrderError'])
   }
 }
 

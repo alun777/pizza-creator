@@ -34,7 +34,7 @@ const ToppingsSection = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    toppingsList: state.ToppingsSection.toppingsList
+    toppingsList: state.getIn(['ToppingsSection', 'toppingsList']).toJS()
   }
 }
 
