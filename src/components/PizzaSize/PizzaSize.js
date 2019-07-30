@@ -1,28 +1,28 @@
 import React from 'react';
 import pizzaImg from '../../assets/size.png';
 
-const PizzaSize = ({ name, price, handleSelectedSize, selectedPizzaSize }) => {
+const PizzaSize = ({ sizeName, sizePrice, handleSelectedSize, selectedPizza }) => {
 
   const getPizzaSizeClassName = () => {
-    const opacityClassName = selectedPizzaSize? 'size__opacity' : '';
-    if (selectedPizzaSize === name) {
-      return `size size__${name} size__active`
+    const opacityClassName = selectedPizza.sizeName? 'size__opacity' : '';
+    if (selectedPizza.sizeName === sizeName) {
+      return `size size__${sizeName} size__active`
     } else {
-      return `size size__${name} ${opacityClassName}`
+      return `size size__${sizeName} ${opacityClassName}`
     }
   }
 
   return (
     <div
       className={getPizzaSizeClassName()}
-      onClick={() => handleSelectedSize(name, price)}
-      key={name}
+      onClick={() => handleSelectedSize(sizeName, sizePrice)}
+      key={sizeName}
     >
-      <img src={pizzaImg} alt={name} />
+      <img src={pizzaImg} alt={sizeName} />
       <div>
-        {name}
+        {sizeName}
         <br />
-        <span className="size__price">${price}</span>
+        <span className="size__price">${sizePrice}</span>
       </div>
     </div>
   );

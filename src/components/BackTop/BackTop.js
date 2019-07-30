@@ -11,7 +11,7 @@ class BackTop extends Component {
         className={ showScrollTop? 'backTop backTop__show': 'backTop backTop__hide'}
         onClick={this.handleScrollTop}
       >
-        <i class="backTop__iconfont">&#xe62e;</i>
+        <i className="backTop__iconfont">&#xe62e;</i>
       </button>
     )
   }

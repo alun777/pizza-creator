@@ -1,20 +1,19 @@
 import React from 'react';
 import PizzaSize from '../PizzaSize/index';
 
-
-const SizesSections = ({ selectedPizzaSize, handleSelectedSize, listPizzaSize }) => {
+const SizesSections = ({ selectedPizza, handleSelectedSize, listPizzaSize }) => {
   
   return (
     <section className="section sizes">
       <h2 className="section__title">Select your size</h2>
       <div className="sizes__container">
-        {listPizzaSize.map(({ name, price }) => {
+        {listPizzaSize.map(({ sizeName, sizePrice }) => {
           return (
             <PizzaSize
-              key={name}
-              selectedPizzaSize={selectedPizzaSize}
-              name={name}
-              price={price}
+              key={sizeName}
+              selectedPizza={selectedPizza}
+              sizeName={sizeName}
+              sizePrice={sizePrice}
               handleSelectedSize={handleSelectedSize}
             />
           )

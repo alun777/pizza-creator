@@ -3,21 +3,20 @@ import SubmitButton from '../SubmitButton';
 
 const SummarySection =({ 
   selectedToppings, 
-  selectedPizzaSize, 
+  selectedPizza, 
   summaryTotalPrice, 
-  selectedPizzaPrice, 
   onAmountAdd, 
   onAmountMinus,
   onClickPlaceOrder
  }) => {
-
+  const { sizePrice, sizeName } = selectedPizza;
   return (
     <section className="section summary">
       <h2 className="section__title">Summary</h2>
       <ul className="items">
         <li className="item">
-          <span className="item__name">{selectedPizzaSize? `Pizza (${selectedPizzaSize})` : ''}</span>
-          <span className="item__price">{selectedPizzaPrice? `$${selectedPizzaPrice}`: ''}</span>
+          <span className="item__name">{sizeName? `Pizza (${sizeName})` : ''}</span>
+          <span className="item__price">{sizePrice? `$${sizePrice}`: ''}</span>
         </li>
         {
           selectedToppings.map(({ name, price, amount }) => {

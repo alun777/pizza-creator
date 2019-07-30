@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { actionCreators } from './store/index';
 import SizesSections from '../SizesSection/index';
 import ToppingsSection from '../ToppingsSection/index';
 import SummarySection from '../SummarySection/index';
@@ -8,19 +8,61 @@ import DetailsSection from '../DetailsSection/index';
 import SubmitErrorPrompt from '../SubmitErrorPrompt/index';
 import BackTop from '../BackTop/index';
 
-import { actionCreators } from './store/index';
-
-
 class PizzaCreatorAppForm extends Component {
   constructor(props) {
     super(props);
     this.addSelectToppingAmount = this.addSelectToppingAmount.bind(this)
     this.minusSelectedToppingAmount = this.minusSelectedToppingAmount.bind(this)
+  }
 
+  render() {
+    const {
+      selectedToppings,
+      selectedPizza,
+      listPizzaSize,
+      details,
+      placeOrderError,
+      handleInputChange,
+      handleSelectedSize,
+      onClickPlaceOrder
+    } = this.props
+
+    return (
+      <section className="pizza__creator__app">
+        <form action="">
+          <DetailsSection
+            details={details}
+            handleInputChange={handleInputChange}
+          />
+          <SizesSections
+            selectedPizza={selectedPizza}
+            listPizzaSize={listPizzaSize}
+            handleSelectedSize={handleSelectedSize}
+          />
+          <ToppingsSection
+            selectedToppings={selectedToppings}
+            onAmountAdd={this.addSelectToppingAmount}
+            onAmountMinus={this.minusSelectedToppingAmount}
+          />
+          <SummarySection
+            selectedToppings={selectedToppings}
+            selectedPizza={selectedPizza}
+            summaryTotalPrice={this.getSummaryTotal()}
+            onAmountAdd={this.addSelectToppingAmount}
+            onAmountMinus={this.minusSelectedToppingAmount}
+            onClickPlaceOrder={() => { onClickPlaceOrder(selectedToppings) }}
+          />
+          <SubmitErrorPrompt placeOrderError={placeOrderError}>
+            Please select at least one topping to place order!
+          </SubmitErrorPrompt>
+          <BackTop />
+        </form>
+      </section>
+    )
   }
 
   updateSelectedToppingAmount(toppingName, price, delta) {
-    const { selectedToppings } = this.props;
+    const { selectedToppings, setSelectedTopping } = this.props;
     const selectedTopping = selectedToppings.find(({ name }) => {
       return name === toppingName;
     })
@@ -33,12 +75,12 @@ class PizzaCreatorAppForm extends Component {
         amount: newAmount,
         price
       }];
-      this.props.setSelectedTopping(newList);
+      setSelectedTopping(newList);
     } else if (selectedTopping) {
       const selectedToppingIndex = selectedToppings.indexOf(selectedTopping);
       const newList = [...selectedToppings];
       newList[selectedToppingIndex].amount = newAmount
-      this.props.setSelectedTopping(newList);
+      setSelectedTopping(newList);
     }
   }
 
@@ -51,59 +93,22 @@ class PizzaCreatorAppForm extends Component {
   }
 
   getSummaryTotal() {
-    const { selectedPizzaPrice, selectedToppings } = this.props;
+    const { selectedPizza, selectedToppings } = this.props;
+    const { sizePrice } = selectedPizza
 
     let totalToppingPrice = 0
     for (let i = 0; i < selectedToppings.length; i++) {
       totalToppingPrice = totalToppingPrice + selectedToppings[i].price * selectedToppings[i].amount
     }
-    const summaryTotalPrice = parseFloat(selectedPizzaPrice + totalToppingPrice).toFixed(2);
+    const summaryTotalPrice = parseFloat(sizePrice + totalToppingPrice).toFixed(2);
     return summaryTotalPrice
-  }
-
-  render() {
-    const { selectedToppings, selectedPizzaSize, selectedPizzaPrice, listPizzaSize, details, placeOrderError } = this.props
-    return (
-      <section className="pizza__creator__app">
-        <form action="">
-          <SubmitErrorPrompt placeOrderError={placeOrderError}>
-            Please select at least one topping to place order!
-          </SubmitErrorPrompt>
-          <DetailsSection
-            details={details}
-            handleInputChange={this.props.handleInputChange}
-          />
-          <SizesSections
-            selectedPizzaSize={selectedPizzaSize}
-            handleSelectedSize={this.props.handleSelectedSize}
-            listPizzaSize={listPizzaSize}
-          />
-          <ToppingsSection
-            selectedToppings={selectedToppings}
-            onAmountAdd={this.addSelectToppingAmount}
-            onAmountMinus={this.minusSelectedToppingAmount}
-          />
-          <SummarySection
-            selectedToppings={selectedToppings}
-            selectedPizzaSize={selectedPizzaSize}
-            selectedPizzaPrice={selectedPizzaPrice}
-            summaryTotalPrice={this.getSummaryTotal()}
-            onAmountAdd={this.addSelectToppingAmount}
-            onAmountMinus={this.minusSelectedToppingAmount}
-            onClickPlaceOrder={()=>{this.props.onClickPlaceOrder(selectedToppings)}}
-          />
-          <BackTop />
-        </form>
-      </section>
-    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     selectedToppings: state.getIn(['PizzaCreatorAppForm', 'selectedToppings']).toJS(),
-    selectedPizzaSize: state.getIn(['PizzaCreatorAppForm', 'selectedPizzaSize']),
-    selectedPizzaPrice: state.getIn(['PizzaCreatorAppForm', 'selectedPizzaPrice']),
+    selectedPizza: state.getIn(['PizzaCreatorAppForm', 'selectedPizza']).toJS(),
     listPizzaSize: state.getIn(['PizzaCreatorAppForm', 'listPizzaSize']).toJS(),
     details: state.getIn(['PizzaCreatorAppForm', 'details']).toJS(),
     placeOrderError: state.getIn(['PizzaCreatorAppForm', 'placeOrderError'])
@@ -116,11 +121,12 @@ const mapDispatchToProps = (dispatch) => {
       const action = actionCreators.setSelectedToppingAction(newList);
       dispatch(action);
     },
-    handleSelectedSize(toppingName, price) {
-      const action = actionCreators.handleSelectedSizeAction(toppingName, price);
+    handleSelectedSize(sizeName, sizePrice) {
+      const action = actionCreators.handleSelectedSizeAction(sizeName, sizePrice);
       dispatch(action);
     },
     handleInputChange(event, name) {
+      console.log(event)
       const action = actionCreators.handleInputChangeAction(event, name)
       dispatch(action);
     },

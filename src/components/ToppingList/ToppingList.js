@@ -6,22 +6,18 @@ class ToppingList extends Component {
     this.getToppingClassName=this.getToppingClassName.bind(this);
     this.getSelectedTopping=this.getSelectedTopping.bind(this)
     this.getAmount=this.getAmount.bind(this);
-    
   }
 
   getSelectedTopping() {
-    const { selectedToppings, name } = this.props;
-    
-    const selectedTopping = selectedToppings.find(({ name: selectedToppingName }) => selectedToppingName === name);
-
+    const { selectedToppings, toppingName } = this.props;
+    const selectedTopping = selectedToppings.find(({ name }) => name === toppingName);
     return selectedTopping
   }
 
   getToppingClassName() {
     const selectedTopping = this.getSelectedTopping();
-    const active = selectedTopping && selectedTopping.amount > 0;
-
-    if (!active) {
+    const toppingActive = selectedTopping && selectedTopping.amount > 0;
+    if (!toppingActive) {
       return 'topping';
     }
     return 'topping topping__active'
@@ -29,22 +25,22 @@ class ToppingList extends Component {
 
   getAmount() {
     const selectedTopping = this.getSelectedTopping();
-    const amount = selectedTopping ? selectedTopping.amount : 0;
-    return amount;
+    const toppingAmount = selectedTopping ? selectedTopping.amount : 0;
+    return toppingAmount;
   }
 
   render() {
-    const { srcImg, name, onAmountAdd, onAmountMinus, price } = this.props
+    const { srcImg, toppingName, onAmountAdd, onAmountMinus, toppingPrice } = this.props
     return (
       <div
         className={this.getToppingClassName()}
       >
-        <img src={srcImg} alt={name}></img>
-        <span>{name}</span>
+        <img src={srcImg} alt={toppingName}></img>
+        <span>{toppingName}</span>
         <div className="topping__amount">
-          <button type="button" onClick={() => onAmountMinus(name, price)}>-</button>
+          <button type="button" onClick={() => onAmountMinus(toppingName, toppingPrice)}>-</button>
           <span>{this.getAmount()}</span>
-          <button type="button" onClick={() => onAmountAdd(name, price)}>+</button>
+          <button type="button" onClick={() => onAmountAdd(toppingName, toppingPrice)}>+</button>
         </div>
       </div>
     )

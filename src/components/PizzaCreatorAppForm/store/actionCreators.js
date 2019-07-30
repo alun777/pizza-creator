@@ -6,10 +6,10 @@ export const setSelectedToppingAction = (newList) => ({
   newList: fromJS(newList)
 });
 
-export const handleSelectedSizeAction = (toppingName, price) => ({
-  type: constants.CHANGE_PIZZASIZE,
-  toppingName,
-  price
+export const handleSelectedSizeAction = (sizeName, sizePrice) => ({
+  type: constants.CHANGE_PIZZA_SIZE,
+  sizeName,
+  sizePrice
 });
 
 export const handleInputChangeAction = (event, name) => ({

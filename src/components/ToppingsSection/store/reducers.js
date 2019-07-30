@@ -4,62 +4,62 @@ const defaultState = fromJS({
   toppingsList: [{
     id: 0,
     name: 'Anchovy',
-    srcImg: 'assets/toppings/anchovy.svg',
+    srcImg: '/api/toppings/anchovy.svg',
     price: 0.99
   }, {
     id: 1,
     name: 'Bacon',
-    srcImg: 'assets/toppings/bacon.svg',
+    srcImg: '/api/toppings/bacon.svg',
     price: 0.99
   }, {
     id: 2,
     name: 'Chili',
-    srcImg: 'assets/toppings/chili.svg',
+    srcImg: '/api/toppings/chili.svg',
     price: 0.99
   }, {
     id: 3,
     name: 'Basil',
-    srcImg: 'assets/toppings/basil.svg',
+    srcImg: '/api/toppings/basil.svg',
     price: 0.99
   }, {
     id: 4,
     name: 'Mozzarella',
-    srcImg: 'assets/toppings/mozzarella.svg',
+    srcImg: '/api/toppings/mozzarella.svg',
     price: 0.99
   }, {
     id: 5,
     name: 'Mushroom',
-    srcImg: 'assets/toppings/mushroom.svg',
+    srcImg: '/api/toppings/mushroom.svg',
     price: 0.99
   }, {
     id: 6,
     name: 'Olive',
-    srcImg: 'assets/toppings/olive.svg',
+    srcImg: '/api/toppings/olive.svg',
     price: 0.99
   }, {
     id: 7,
     name: 'Onion',
-    srcImg: 'assets/toppings/onion.svg',
+    srcImg: '/api/toppings/onion.svg',
     price: 0.99
   }, {
     id: 8,
     name: 'Pepper',
-    srcImg: 'assets/toppings/pepper.svg',
+    srcImg: '/api/toppings/pepper.svg',
     price: 0.99
   }, {
     id: 9,
     name: 'Pepperoni',
-    srcImg: 'assets/toppings/pepperoni.svg',
+    srcImg: '/api/toppings/pepperoni.svg',
     price: 0.99
   }, {
     id: 10,
     name: 'Peppers',
-    srcImg: 'assets/toppings/peppers.svg',
+    srcImg: '/api/toppings/peppers.svg',
     price: 0.99
   }, {
     id: 11,
     name: 'Sweetcorn',
-    srcImg: 'assets/toppings/sweetcorn.svg',
+    srcImg: '/api/toppings/sweetcorn.svg',
     price: 0.99
   }]
 })

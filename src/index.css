@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  min-width: 960px;
 }
 
 .pizza__creator__app {
@@ -144,6 +145,7 @@ body {
   background: #f2f2f2;
   cursor: pointer;
   border: 1px solid transparent;
+  height: 40px;
 }
 
 .topping:hover {
@@ -290,10 +292,14 @@ button[type="submit"]:hover {
   position: fixed;
   right: 2rem;
   bottom: 6rem;
+  width: 35px;
+  height: 35px;
+  text-align: center;
   cursor: pointer;
   border: 2px solid #b0b0b0;
-  border-radius: 8px;
+  border-radius: 4px;
   outline: 0;
+  padding: 0;
 }
 
 @font-face {
