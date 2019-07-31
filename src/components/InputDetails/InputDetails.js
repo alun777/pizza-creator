@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store/index';
 
-const InputDetails = (props) => {
+export const InputDetails = (props) => {
 
   const {
     label,
@@ -12,6 +12,7 @@ const InputDetails = (props) => {
     handleShowError,
     detailsError
   } = props;
+  
   const errorClassName = (detailsError[detailName] && !details[detailName]) ? 'detail__error' : '';
 
   return (

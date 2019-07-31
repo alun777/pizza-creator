@@ -27,6 +27,7 @@ const DetailsSection = ({ details, handleInputChange }) => {
           detailName: 'contactNumber'
         }].map(({ label, detailName }) => (
           <InputDetails
+            className='input'
             key={detailName}
             label={label}
             detailName={detailName}

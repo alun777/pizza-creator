@@ -4,8 +4,6 @@ import store from './store/index';
 import { Provider } from 'react-redux';
 import PizzaCreatorAppForm from './components/PizzaCreatorAppForm/index';
 
-
-
 const App = () => {
   return (
     <Provider store={store}>
