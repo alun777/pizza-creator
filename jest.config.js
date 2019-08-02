@@ -1,13 +1,17 @@
 module.exports =
   {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/**/*.d.ts"
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/**/index.js",
+      "!src/store/reducer.js",
+      "!src/**/assets/**"
+
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": ['./node_modules/jest-enzyme/lib/index.js'],
+    "setupFilesAfterEnv": ['./node_modules/jest-enzyme/lib/index.js', "<rootDir>/src/setupTests.js"],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"

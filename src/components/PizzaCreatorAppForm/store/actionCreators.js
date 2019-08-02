@@ -2,7 +2,7 @@ import { constants } from './index';
 import { fromJS } from 'immutable';
 
 export const setSelectedToppingAction = (newList) => ({
-  type: constants.CHANGE_SELECTEDTOPPINGS,
+  type: constants.CHANGE_SELECTED_TOPPINGS,
   newList: fromJS(newList)
 });
 
@@ -21,7 +21,6 @@ export const handleInputChangeAction = (event, name) => ({
 export const onClickPlaceOrderAction = () => {
   return (dispatch) => {
     const action = onClickPlaceOrderToggleAction(true)
-    console.log(action)
     dispatch(action);
     setTimeout(() => {
       const action = onClickPlaceOrderToggleAction(false)

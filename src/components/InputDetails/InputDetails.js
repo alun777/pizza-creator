@@ -34,13 +34,13 @@ export const InputDetails = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     detailsError: state.getIn(['InputDetails', 'detailsError']).toJS()
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     handleShowError(detailName) {
       const action = actionCreators.handleShowErrorAction(detailName)

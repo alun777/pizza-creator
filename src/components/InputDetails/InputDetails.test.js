@@ -1,11 +1,9 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { InputDetails } from './InputDetails';
+import { shallow } from 'enzyme';
+import { fromJS } from 'immutable';
+import { InputDetails, mapStateToProps, mapDispatchToProps } from './InputDetails';
 
-Enzyme.configure({ adapter: new Adapter() });
-
-const setup = ()=> {
+const setup = () => {
   const props = {
     label: 'name',
     detailName: 'name',
@@ -18,30 +16,55 @@ const setup = ()=> {
       name: false
     }
   }
-  const shallowWrapper = shallow(<InputDetails {...props}/>);
-  const inputElement = shallowWrapper.find('input');
+  const wrapper = shallow(<InputDetails {...props} />);
+  const inputElement = wrapper.find('input');
 
   return {
     props,
-    shallowWrapper,
+    wrapper,
     inputElement
   }
 }
 
-it('input can be rendered', () => {
-  const { inputElement } =setup();
-  expect(inputElement.length).toBe(1);
-});
+describe('testing mapStateToProps and mapDispatchToProps', ()=>{
+  it('should show the correct detailsError value', ()=>{
+    const initialState = fromJS({
+      InputDetails: {
+        detailsError: {jest:'test'}
+      }
+    })
+    expect(mapStateToProps(initialState).detailsError).toEqual({jest:'test'})
+  })
+  it('should dispatch the correct action', () => { 
+    const dispatch = jest.fn();
+    
+    mapDispatchToProps(dispatch).handleShowError();
 
-it('input show the value coming from props', () => {
-  const { inputElement, props } =setup();
-  expect(inputElement.props().value).toEqual(props.details.name)
-});
+    expect(dispatch).toHaveBeenCalled();
+  }) 
+})
 
-it('should trigger the correct function callbacks when got changed and blur', () => {
-  const { props, inputElement } =setup();
-  inputElement.simulate('blur');
-  expect(props.handleShowError).toHaveBeenCalled();
-  inputElement.simulate('change');
-  expect(props.handleInputChange).toHaveBeenCalled();
-});
+
+describe('testing component', () => {
+  it('input can be rendered', () => {
+    const { inputElement } = setup();
+    expect(inputElement.length).toBe(1);
+  });
+
+  it('input show the value coming from props', () => {
+    const { inputElement, props } = setup();
+    expect(inputElement.props().value).toEqual(props.details.name)
+  });
+
+  it('should trigger the correct function callbacks when got changed and blur', () => {
+    const { props, inputElement } = setup();
+    inputElement.simulate('blur');
+    expect(props.handleShowError).toHaveBeenCalled();
+    inputElement.simulate('change');
+    expect(props.handleInputChange).toHaveBeenCalled();
+  });
+
+})
+
+
+

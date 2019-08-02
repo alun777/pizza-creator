@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<button
+  className="backTop backTop__show"
+  onClick={[Function]}
+  type="button"
+>
+  <i
+    className="backTop__iconfont"
+  >
+    
+  </i>
+</button>
+`;

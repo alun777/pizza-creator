@@ -8,7 +8,7 @@ import DetailsSection from '../DetailsSection/index';
 import SubmitErrorPrompt from '../SubmitErrorPrompt/index';
 import BackTop from '../BackTop/index';
 
-class PizzaCreatorAppForm extends Component {
+export class PizzaCreatorAppForm extends Component {
   constructor(props) {
     super(props);
     this.addSelectToppingAmount = this.addSelectToppingAmount.bind(this)
@@ -24,7 +24,7 @@ class PizzaCreatorAppForm extends Component {
       placeOrderError,
       handleInputChange,
       handleSelectedSize,
-      onClickPlaceOrder
+      handleClickPlaceOrder
     } = this.props
 
     return (
@@ -50,7 +50,7 @@ class PizzaCreatorAppForm extends Component {
             summaryTotalPrice={this.getSummaryTotal()}
             onAmountAdd={this.addSelectToppingAmount}
             onAmountMinus={this.minusSelectedToppingAmount}
-            onClickPlaceOrder={() => { onClickPlaceOrder(selectedToppings) }}
+            handleClickPlaceOrder={() => { handleClickPlaceOrder(selectedToppings) }}
           />
           <SubmitErrorPrompt placeOrderError={placeOrderError}>
             Please select at least one topping to place order!
@@ -105,7 +105,7 @@ class PizzaCreatorAppForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     selectedToppings: state.getIn(['PizzaCreatorAppForm', 'selectedToppings']).toJS(),
     selectedPizza: state.getIn(['PizzaCreatorAppForm', 'selectedPizza']).toJS(),
@@ -115,7 +115,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     setSelectedTopping(newList) {
       const action = actionCreators.setSelectedToppingAction(newList);
@@ -126,11 +126,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(action);
     },
     handleInputChange(event, name) {
-      console.log(event)
       const action = actionCreators.handleInputChangeAction(event, name)
       dispatch(action);
     },
-    onClickPlaceOrder(selectedToppings) {
+    handleClickPlaceOrder(selectedToppings) {
       if (selectedToppings.length === 0) {
         const action = actionCreators.onClickPlaceOrderAction()
         dispatch(action)

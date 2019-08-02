@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store/index';
 
-class BackTop extends Component {
+export class BackTop extends Component {
 
   render() {
     const { showScrollTop } = this.props
     return (
       <button
-        className={ showScrollTop? 'backTop backTop__show': 'backTop backTop__hide'}
+        className={showScrollTop ? 'backTop backTop__show' : 'backTop backTop__hide'}
+        type="button"
         onClick={this.handleScrollTop}
       >
         <i className="backTop__iconfont">&#xe62e;</i>
@@ -21,7 +22,7 @@ class BackTop extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.props.changeScrollTop)    
+    window.removeEventListener('scroll', this.props.changeScrollTop)
   }
 
   bindEvents() {
@@ -34,16 +35,17 @@ class BackTop extends Component {
   }
 }
 
-const mapStateToProps = (state)=>{
-  return{
+export const mapStateToProps = (state) => {
+  return {
     showScrollTop: state.getIn(['BackTop', 'showScrollTop'])
+
   }
 }
 
-const mapDispatchToProps = (dispatch)=>{
-  return{
-    changeScrollTop(){
-      if(document.documentElement.scrollTop > 200){
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    changeScrollTop() {
+      if (document.documentElement.scrollTop > 200) {
         dispatch(actionCreators.toggleScrollTop(true))
       } else {
         dispatch(actionCreators.toggleScrollTop(false))

@@ -21,7 +21,7 @@ const SummarySection =({
         {
           selectedToppings.map(({ name, price, amount }) => {
             return  amount > 0 && (
-              <li className="item" key={name}>
+              <li className="item" key={name} data-test='test'>
                 <div className="item__name">
                   <span>{name}</span>
                   <div className="item__amount">

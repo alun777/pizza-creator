@@ -30,7 +30,7 @@ const defaultState = fromJS({
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case constants.CHANGE_SELECTEDTOPPINGS:
+    case constants.CHANGE_SELECTED_TOPPINGS:
       return state.set('selectedToppings', action.newList)
     case constants.CHANGE_PIZZA_SIZE:
       return state.mergeDeep({
