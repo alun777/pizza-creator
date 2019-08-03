@@ -13,29 +13,32 @@ function setup() {
     onClickPlaceOrder: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<SummarySection {...props} />)
+  const wrapper = shallow(<SummarySection {...props} />)
 
   return {
     props,
-    enzymeWrapper
+    wrapper
   }
 }
 
 it('should render self and subcomponents', () => {
-  const { enzymeWrapper } = setup();
-
-  expect(enzymeWrapper.find('section').hasClass("section summary")).toBe(true)
-
-  expect(enzymeWrapper.find('h2').text()).toBe('Summary')
+  const { wrapper } = setup();
+  
+  expect(wrapper.find('section').hasClass("section summary")).toBe(true)
+  expect(wrapper.find('h2').text()).toBe('Summary')
 })
 
 it('should return <ToppingList>', () => {
-  const { enzymeWrapper } = setup();
-  expect(enzymeWrapper.find('div.item__amount').length).toEqual(1)
+  const { wrapper } = setup();
+  
+  expect(wrapper.find('div.item__amount').length).toEqual(1)
 })
 
 it('should call function when button being clicked', () => {
-  const { enzymeWrapper, props } = setup();
-  enzymeWrapper.find('button').at(1).simulate('click')
+  const { props, wrapper } = setup();
+  wrapper.find('button').at(1).simulate('click')
   expect(props.onAmountAdd).toHaveBeenCalledWith("Sweetcorn")
+
+  wrapper.find('button').at(0).simulate('click')
+  expect(props.onAmountMinus).toHaveBeenCalledWith("Sweetcorn")
 })

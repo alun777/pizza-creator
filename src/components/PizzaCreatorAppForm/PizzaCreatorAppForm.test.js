@@ -4,7 +4,6 @@ import { fromJS } from 'immutable';
 import { PizzaCreatorAppForm, mapStateToProps, mapDispatchToProps } from './PizzaCreatorAppForm';
 import { actionCreators } from './store/index';
 
-
 const setup = () => {
   const props = {
     listPizzaSize: [{
@@ -45,8 +44,6 @@ const setup = () => {
   }
 }
 
-
-
 describe('testing component', () => {
   it('should render the correct component', () => {
     const { wrapper } = setup();
@@ -83,9 +80,6 @@ describe('testing component', () => {
     expect(spyUpdateSelectedToppingAmount).toHaveBeenCalledTimes(2)
   })
 })
-
-
-
 
 describe('testing mapStateToProps', () => {
   it('should show the correct detailsError value', () => {

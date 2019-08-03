@@ -28,7 +28,7 @@ export const ToppingsSection = ({ selectedToppings, onAmountAdd, onAmountMinus, 
   )
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     toppingsList: state.getIn(['ToppingsSection', 'toppingsList']).toJS()
   }
