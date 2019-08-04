@@ -53,6 +53,7 @@ describe('testing lifeCycleHook', () => {
     const sWrapper = shallow(<BackTop {...props} />)
     map.scroll({scrollTop: '200'})
     expect(props.changeScrollTop).toHaveBeenCalled()
+    sWrapper.unmount()
   })
 
   it('should call changeScrollTop when scroll', ()=>{
@@ -61,9 +62,11 @@ describe('testing lifeCycleHook', () => {
     const event = new Event('scroll');
     domNode.dispatchEvent(event);
     expect(props.changeScrollTop).toHaveBeenCalled()
+   
+    const spy = jest.spyOn(wrapper.instance(), 'componentWillUnmount')
+    expect(spy).not.toHaveBeenCalled()
   })
 })
-
 
 describe('testing mapStateToProps and mapDispatchToProps', () => {
   it('should show the correct showScrollTop value', () => {
