@@ -7,26 +7,26 @@ import { BackTop, mapStateToProps, mapDispatchToProps } from './BackTop';
 const props = {
   showScrollTop: true,
   changeScrollTop: jest.fn(),
-  dispatch: jest.fn()
-}
+  dispatch: jest.fn(),
+};
 
-let wrapper
+let wrapper;
 beforeEach(() => {
-  wrapper = shallow(<BackTop {...props} />)
-})
+  wrapper = shallow(<BackTop {...props} />);
+});
 
 describe('testing component', () => {
   it('should have a correct iconfont element', () => {
-    expect(wrapper.find('button').length).toBe(1);
+    expect(wrapper.find('button')).toHaveLength(1);
 
     expect(wrapper.find('button').text()).toBeTruthy();
-  })
+  });
 
   it('successfully calls the onClick handler', () => {
-    expect(wrapper.find('button').length).toEqual(1)
+    expect(wrapper.find('button')).toHaveLength(1);
 
-    window.scrollTo = jest.fn()
-    let prevented = false
+    window.scrollTo = jest.fn();
+    let prevented = false;
     wrapper.find('button').simulate('click', {
       preventDefault: () => {
         prevented = true;
@@ -35,48 +35,48 @@ describe('testing component', () => {
     expect(prevented).toBe(true);
 
     wrapper.find('button').simulate('click', {
-      preventDefault: jest.fn()
-    })
-    expect(window.scrollTo).toHaveBeenCalled()
-  })
+      preventDefault: jest.fn(),
+    });
+    expect(window.scrollTo).toHaveBeenCalled();
+  });
   it('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+    expect(wrapper).toMatchSnapshot();
+  });
+});
 
 describe('testing lifeCycleHook', () => {
   it('should call the correct function when lifecycle triggers', () => {
     const map = {};
-    window.addEventListener = jest.fn((event, callback)=>{
-      map[event] = callback
-    })
-    const sWrapper = shallow(<BackTop {...props} />)
-    map.scroll({scrollTop: '200'})
-    expect(props.changeScrollTop).toHaveBeenCalled()
-    sWrapper.unmount()
-  })
+    window.addEventListener = jest.fn((event, callback) => {
+      map[event] = callback;
+    });
+    const sWrapper = shallow(<BackTop {...props} />);
+    map.scroll({ scrollTop: '200' });
+    expect(props.changeScrollTop).toHaveBeenCalled();
+    sWrapper.unmount();
+  });
 
-  it('should call changeScrollTop when scroll', ()=>{
-    const mWrapper = mount(<BackTop {...props} />)
-    const domNode = mWrapper.getDOMNode()
+  it('should call changeScrollTop when scroll', () => {
+    const mWrapper = mount(<BackTop {...props} />);
+    const domNode = mWrapper.getDOMNode();
     const event = new Event('scroll');
     domNode.dispatchEvent(event);
-    expect(props.changeScrollTop).toHaveBeenCalled()
-   
-    const spy = jest.spyOn(wrapper.instance(), 'componentWillUnmount')
-    expect(spy).not.toHaveBeenCalled()
-  })
-})
+    expect(props.changeScrollTop).toHaveBeenCalled();
+
+    const spy = jest.spyOn(wrapper.instance(), 'componentWillUnmount');
+    expect(spy).not.toHaveBeenCalled();
+  });
+});
 
 describe('testing mapStateToProps and mapDispatchToProps', () => {
   it('should show the correct showScrollTop value', () => {
     const initialState = fromJS({
       BackTop: {
-        showScrollTop: true
-      }
-    })
-    expect(mapStateToProps(initialState).showScrollTop).toEqual(true)
-  })
+        showScrollTop: true,
+      },
+    });
+    expect(mapStateToProps(initialState).showScrollTop).toEqual(true);
+  });
 
   it('should dispatch the correct action', () => {
     const dispatch = jest.fn();
@@ -84,10 +84,5 @@ describe('testing mapStateToProps and mapDispatchToProps', () => {
     mapDispatchToProps(dispatch).changeScrollTop();
 
     expect(dispatch).toHaveBeenCalled();
-  })
-})
-
-
-
-
-
+  });
+});

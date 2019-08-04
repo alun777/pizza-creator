@@ -10,35 +10,35 @@ function setup() {
     summaryTotalPrice: 0,
     onAmountAdd: jest.fn(),
     onAmountMinus: jest.fn(),
-    onClickPlaceOrder: jest.fn()
-  }
+    onClickPlaceOrder: jest.fn(),
+  };
 
-  const wrapper = shallow(<SummarySection {...props} />)
+  const wrapper = shallow(<SummarySection {...props} />);
 
   return {
     props,
-    wrapper
-  }
+    wrapper,
+  };
 }
 
 it('should render self and subcomponents', () => {
   const { wrapper } = setup();
-  
-  expect(wrapper.find('section').hasClass("section summary")).toBe(true)
-  expect(wrapper.find('h2').text()).toBe('Summary')
-})
+
+  expect(wrapper.find('section').hasClass('section summary')).toBe(true);
+  expect(wrapper.find('h2').text()).toBe('Summary');
+});
 
 it('should return <ToppingList>', () => {
   const { wrapper } = setup();
-  
-  expect(wrapper.find('div.item__amount').length).toEqual(1)
-})
+
+  expect(wrapper.find('div.item__amount')).toHaveLength(1);
+});
 
 it('should call function when button being clicked', () => {
   const { props, wrapper } = setup();
-  wrapper.find('button').at(1).simulate('click')
-  expect(props.onAmountAdd).toHaveBeenCalledWith("Sweetcorn")
+  wrapper.find('button').at(1).simulate('click');
+  expect(props.onAmountAdd).toHaveBeenCalledWith('Sweetcorn');
 
-  wrapper.find('button').at(0).simulate('click')
-  expect(props.onAmountMinus).toHaveBeenCalledWith("Sweetcorn")
-})
+  wrapper.find('button').at(0).simulate('click');
+  expect(props.onAmountMinus).toHaveBeenCalledWith('Sweetcorn');
+});

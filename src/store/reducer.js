@@ -8,5 +8,5 @@ export default combineReducers({
   InputDetails,
   PizzaCreatorAppForm,
   ToppingsSection,
-  BackTop
-})
+  BackTop,
+});

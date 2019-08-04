@@ -1,9 +1,14 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true,
+        "jest/globals": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint-config-airbnb",
+        "plugin:react/recommended"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -16,9 +21,27 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ],
     "rules": {
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error",
+        "jsx-a11y/label-has-for": "0",
+        "jsx-a11y/click-events-have-key-events": "0",
+        "jsx-a11y/no-static-element-interactions": "0",
+        "import/no-cycle": 0,
+        "import/no-named-as-default": 0,
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "import/prefer-default-export": 0,
         "indent": [
             "error",
             2
@@ -34,6 +57,18 @@
         "semi": [
             "error",
             "always"
+        ],
+        "react/require-default-props": 0,
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
         ]
     }
 }

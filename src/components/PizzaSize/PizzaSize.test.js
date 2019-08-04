@@ -9,19 +9,19 @@ const props = {
   handleSelectedSize: jest.fn(),
   selectedPizza: {
     sizeName: 'Small',
-    sizePrice: 9.99
-  }
-}
+    sizePrice: 9.99,
+  },
+};
 
 it('component should render correct pizza sie', () => {
-  const wrapper = shallow(<PizzaSize {...props} />)
-  expect(wrapper.find('.size div').text()).toEqual(props.sizeName + '$' + props.sizePrice)
-})
+  const wrapper = shallow(<PizzaSize {...props} />);
+  expect(wrapper.find('.size div').text()).toEqual(`${props.sizeName}$${props.sizePrice}`);
+});
 
 it('should call the correct function when being clicked', () => {
-  const wrapper = shallow(<PizzaSize {...props} />)
-  expect(wrapper.find('div').length).toBe(2)
+  const wrapper = shallow(<PizzaSize {...props} />);
+  expect(wrapper.find('div')).toHaveLength(2);
 
   wrapper.simulate('click');
   expect(props.handleSelectedSize).toHaveBeenCalled();
-})
+});

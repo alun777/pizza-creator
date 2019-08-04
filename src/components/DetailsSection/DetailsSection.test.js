@@ -8,15 +8,14 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const props = {
   handleInputChange: jest.fn(),
-  details: {}
-}
+  details: {},
+};
 
-let wrapper
-beforeEach(()=>{
-  wrapper = shallow(<DetailsSection {...props}/>)
-})
+let wrapper;
+beforeEach(() => {
+  wrapper = shallow(<DetailsSection {...props} />);
+});
 
-it('component should render six input detail length', ()=>{
-  expect(wrapper.find(InputDetails).length).toEqual(6)
-})
-
+it('component should render six input detail length', () => {
+  expect(wrapper.find(InputDetails)).toHaveLength(6);
+});

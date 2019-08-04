@@ -3,34 +3,33 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import SubmitButton from './SubmitButton';
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
 function setup() {
   const props = {
-    onClickPlaceOrder: jest.fn()
-  }
+    onClickPlaceOrder: jest.fn(),
+  };
 
-  const enzymeWrapper = shallow(<SubmitButton {...props} />)
+  const enzymeWrapper = shallow(<SubmitButton {...props} />);
 
   return {
     props,
-    enzymeWrapper
-  }
+    enzymeWrapper,
+  };
 }
 
 it('should render self and subcomponents', () => {
   const { enzymeWrapper } = setup();
 
-  expect(enzymeWrapper.find('button').hasClass('submit')).toBe(true)
+  expect(enzymeWrapper.find('button').hasClass('submit')).toBe(true);
 
-  expect(enzymeWrapper.find('button').text()).toBe('Place order')
-})
+  expect(enzymeWrapper.find('button').text()).toBe('Place order');
+});
 
 it('should call onClickPlaceOrder when onClick', () => {
-  const fakeEvent = { preventDefault: jest.fn() }
+  const fakeEvent = { preventDefault: jest.fn() };
   const { enzymeWrapper, props } = setup();
   const button = enzymeWrapper.find('button');
-  button.simulate('click', fakeEvent)
+  button.simulate('click', fakeEvent);
   expect(props.onClickPlaceOrder).toHaveBeenCalled();
-
-})
+});
