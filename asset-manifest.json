@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pizza-creator/static/css/main.acd82de7.chunk.css",
+    "main.js": "/pizza-creator/static/js/main.63224b21.chunk.js",
+    "main.js.map": "/pizza-creator/static/js/main.63224b21.chunk.js.map",
+    "runtime~main.js": "/pizza-creator/static/js/runtime~main.ea12da73.js",
+    "runtime~main.js.map": "/pizza-creator/static/js/runtime~main.ea12da73.js.map",
+    "static/js/2.7d15bdeb.chunk.js": "/pizza-creator/static/js/2.7d15bdeb.chunk.js",
+    "static/js/2.7d15bdeb.chunk.js.map": "/pizza-creator/static/js/2.7d15bdeb.chunk.js.map",
+    "index.html": "/pizza-creator/index.html",
+    "precache-manifest.7274efb481d4abe93cdc6b9e919ba645.js": "/pizza-creator/precache-manifest.7274efb481d4abe93cdc6b9e919ba645.js",
+    "service-worker.js": "/pizza-creator/service-worker.js",
+    "static/css/main.acd82de7.chunk.css.map": "/pizza-creator/static/css/main.acd82de7.chunk.css.map",
+    "static/media/error.png": "/pizza-creator/static/media/error.af8dad7a.png"
+  }
+}
