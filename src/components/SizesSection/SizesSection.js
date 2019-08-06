@@ -21,10 +21,10 @@ const SizesSections = ({ selectedPizza, handleSelectedSize, listPizzaSize }) => 
 );
 
 SizesSections.propTypes = {
-  selectedPizza: PropTypes.shape({
+  selectedPizza: PropTypes.arrayOf(PropTypes.shape({
     sizeName: PropTypes.string,
-    sizePrice: PropTypes.string,
-  }),
+    sizePrice: PropTypes.number,
+  })),
   handleSelectedSize: PropTypes.func.isRequired,
   listPizzaSize: PropTypes.arrayOf(PropTypes.shape({
     sizeName: PropTypes.string,

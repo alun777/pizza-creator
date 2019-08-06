@@ -60,10 +60,10 @@ SummarySection.propTypes = {
     amount: PropTypes.number,
     price: PropTypes.number,
   })),
-  selectedPizza: PropTypes.shape({
+  selectedPizza: PropTypes.arrayOf(PropTypes.shape({
     sizeName: PropTypes.string,
-    sizePrice: PropTypes.string,
-  }),
+    sizePrice: PropTypes.number,
+  })),
   summaryTotalPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onAmountAdd: PropTypes.func.isRequired,
   onAmountMinus: PropTypes.func.isRequired,

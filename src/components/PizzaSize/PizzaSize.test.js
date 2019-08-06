@@ -7,10 +7,10 @@ const props = {
   sizeName: 'Small',
   sizePrice: 9.99,
   handleSelectedSize: jest.fn(),
-  selectedPizza: {
+  selectedPizza: [{
     sizeName: 'Small',
     sizePrice: 9.99,
-  },
+  }],
 };
 
 it('component should render correct pizza sie', () => {

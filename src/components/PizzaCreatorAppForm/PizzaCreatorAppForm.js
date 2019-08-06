@@ -139,10 +139,10 @@ PizzaCreatorAppForm.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ])).isRequired,
-  selectedPizza: PropTypes.shape({
+  selectedPizza: PropTypes.arrayOf(PropTypes.shape({
     sizeName: PropTypes.string,
-    sizePrice: PropTypes.string,
-  }),
+    sizePrice: PropTypes.number,
+  })),
   listPizzaSize: PropTypes.arrayOf(PropTypes.object).isRequired,
   details: PropTypes.shape({
     name: PropTypes.string,

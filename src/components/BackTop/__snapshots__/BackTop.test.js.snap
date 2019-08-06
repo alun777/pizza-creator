@@ -3,6 +3,7 @@
 exports[`testing component should match snapshot 1`] = `
 <button
   className="backTop backTop__show"
+  onClick={[Function]}
   type="button"
 >
   <i

@@ -7,10 +7,10 @@ Enzyme.configure({ adapter: new Adapter() });
 
 function setup() {
   const props = {
-    selectedPizza: {
+    selectedPizza: [{
       sizeName: 'Medium',
       sizePrice: 10.99,
-    },
+    }],
     handleSelectedSize: jest.fn(),
     listPizzaSize: [{
       sizeName: 'Small',

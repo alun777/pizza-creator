@@ -5,10 +5,11 @@ import { actionCreators } from './store/index';
 
 
 export class BackTop extends Component {
-  static handleScrollTop(event) {
-    event.preventDefault();
-    window.scrollTo(0, 0);
+  constructor(props) {
+    super(props);
+    this.handleScrollTop = this.handleScrollTop.bind(this);
   }
+
 
   componentDidMount() {
     const { changeScrollTop } = this.props;
@@ -19,6 +20,12 @@ export class BackTop extends Component {
     const { changeScrollTop } = this.props;
     window.removeEventListener('scroll', changeScrollTop);
   }
+
+  handleScrollTop(event) {
+    event.preventDefault();
+    window.scrollTo(0, 0);
+  }
+
 
   render() {
     const { showScrollTop } = this.props;

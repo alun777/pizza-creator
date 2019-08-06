@@ -10,36 +10,27 @@ const props = {
   dispatch: jest.fn(),
 };
 
-let wrapper;
-beforeEach(() => {
-  wrapper = shallow(<BackTop {...props} />);
-});
-
 describe('testing component', () => {
   it('should have a correct iconfont element', () => {
+    const wrapper = shallow(<BackTop {...props} />);
+
     expect(wrapper.find('button')).toHaveLength(1);
 
     expect(wrapper.find('button').text()).toBeTruthy();
   });
 
   it('successfully calls the onClick handler', () => {
-    expect(wrapper.find('button')).toHaveLength(1);
-
-    window.scrollTo = jest.fn();
-    let prevented = false;
-    wrapper.find('button').simulate('click', {
-      preventDefault: () => {
-        prevented = true;
-      },
-    });
-    expect(prevented).toBe(true);
-
-    wrapper.find('button').simulate('click', {
-      preventDefault: jest.fn(),
-    });
-    expect(window.scrollTo).toHaveBeenCalled();
+    const spyFunction = jest.spyOn(BackTop.prototype, 'handleScrollTop');
+    const wrapper = shallow(<BackTop {...props} />);
+    const scrollToSpy = jest.fn();
+    global.scrollTo = scrollToSpy;
+    const fakeEvent = { preventDefault: jest.fn() };
+    wrapper.find('button').simulate('click', fakeEvent);
+    expect(spyFunction).toHaveBeenCalled();
   });
   it('should match snapshot', () => {
+    const wrapper = shallow(<BackTop {...props} />);
+
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -57,6 +48,8 @@ describe('testing lifeCycleHook', () => {
   });
 
   it('should call changeScrollTop when scroll', () => {
+    const wrapper = shallow(<BackTop {...props} />);
+
     const mWrapper = mount(<BackTop {...props} />);
     const domNode = mWrapper.getDOMNode();
     const event = new Event('scroll');
