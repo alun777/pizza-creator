@@ -8,7 +8,7 @@ const SummarySection = ({
   summaryTotalPrice,
   onAmountAdd,
   onAmountMinus,
-  onClickPlaceOrder,
+  handleClickPlaceOrder,
 }) => {
   const { sizePrice, sizeName } = selectedPizza;
   return (
@@ -47,7 +47,7 @@ const SummarySection = ({
         </span>
       </p>
       <p>
-        <SubmitButton onClickPlaceOrder={onClickPlaceOrder} />
+        <SubmitButton handleClickPlaceOrder={handleClickPlaceOrder} />
       </p>
     </section>
   );
@@ -60,14 +60,14 @@ SummarySection.propTypes = {
     amount: PropTypes.number,
     price: PropTypes.number,
   })),
-  selectedPizza: PropTypes.arrayOf(PropTypes.shape({
+  selectedPizza: PropTypes.shape({
     sizeName: PropTypes.string,
     sizePrice: PropTypes.number,
-  })),
+  }),
   summaryTotalPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onAmountAdd: PropTypes.func.isRequired,
   onAmountMinus: PropTypes.func.isRequired,
-  onClickPlaceOrder: PropTypes.func,
+  handleClickPlaceOrder: PropTypes.func,
 };
 
 export default SummarySection;

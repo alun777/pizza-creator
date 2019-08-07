@@ -12,7 +12,7 @@ function setup() {
     toppingsList: [{
       id: 0,
       name: 'Anchovy',
-      srcImg: '/api/toppings/anchovy.svg',
+      srcImg: './api/toppings/anchovy.svg',
       price: 0.99,
     }],
   };

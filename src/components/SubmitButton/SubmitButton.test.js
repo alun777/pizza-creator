@@ -7,7 +7,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 function setup() {
   const props = {
-    onClickPlaceOrder: jest.fn(),
+    handleClickPlaceOrder: jest.fn(),
   };
 
   const enzymeWrapper = shallow(<SubmitButton {...props} />);
@@ -26,10 +26,10 @@ it('should render self and subcomponents', () => {
   expect(enzymeWrapper.find('button').text()).toBe('Place order');
 });
 
-it('should call onClickPlaceOrder when onClick', () => {
+it('should call handleClickPlaceOrder when onClick', () => {
   const fakeEvent = { preventDefault: jest.fn() };
   const { enzymeWrapper, props } = setup();
   const button = enzymeWrapper.find('button');
   button.simulate('click', fakeEvent);
-  expect(props.onClickPlaceOrder).toHaveBeenCalled();
+  expect(props.handleClickPlaceOrder).toHaveBeenCalled();
 });

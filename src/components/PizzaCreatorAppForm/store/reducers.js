@@ -15,7 +15,7 @@ const defaultState = fromJS({
   selectedToppings: [],
   selectedPizza: {
     sizeName: '',
-    sizePrice: '',
+    sizePrice: null,
   },
   details: {
     name: '',

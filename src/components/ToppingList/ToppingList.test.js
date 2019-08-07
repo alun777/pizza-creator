@@ -5,7 +5,7 @@ import ToppingList from './ToppingList';
 
 function setup() {
   const props = {
-    srcImg: '/api/toppings/bacon.svg',
+    srcImg: './api/toppings/bacon.svg',
     toppingName: 'Bacon',
     onAmountAdd: jest.fn(),
     onAmountMinus: jest.fn(),

@@ -17,10 +17,10 @@ const setup = () => {
       sizePrice: 11.99,
     }],
     selectedToppings: [],
-    selectedPizza: [{
+    selectedPizza: {
       sizeName: '',
       sizePrice: 0,
-    }],
+    },
     details: {
       name: '',
       email: '',
@@ -86,10 +86,10 @@ describe('testing mapStateToProps', () => {
     const initialState = fromJS({
       PizzaCreatorAppForm: {
         selectedToppings: [{ name: 'Chili', amount: 1, price: 0.99 }],
-        selectedPizza: [{
+        selectedPizza: {
           sizeName: 'Medium',
           sizePrice: 10.99,
-        }],
+        },
         listPizzaSize: [],
         details: {},
         placeOrderError: true,
@@ -100,7 +100,7 @@ describe('testing mapStateToProps', () => {
 
     expect(mapStateToProps(initialState).selectedToppings).toEqual([{ name: 'Chili', amount: 1, price: 0.99 }]);
 
-    expect(mapStateToProps(initialState).selectedPizza).toEqual([{ sizeName: 'Medium', sizePrice: 10.99 }]);
+    expect(mapStateToProps(initialState).selectedPizza).toEqual({ sizeName: 'Medium', sizePrice: 10.99 });
   });
 });
 

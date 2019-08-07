@@ -22,8 +22,11 @@ export class BackTop extends Component {
   }
 
   handleScrollTop(event) {
-    event.preventDefault();
-    window.scrollTo(0, 0);
+    const { changeScrollTop } = this.props;
+    if (changeScrollTop) {
+      event.preventDefault();
+      window.scrollTo(0, 0);
+    }
   }
 
 
@@ -48,7 +51,7 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   changeScrollTop() {
-    if (document.documentElement.scrollTop > 200) {
+    if (document.documentElement.scrollTop > 400) {
       dispatch(actionCreators.toggleScrollTop(true));
     } else {
       dispatch(actionCreators.toggleScrollTop(false));

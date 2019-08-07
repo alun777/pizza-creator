@@ -1,5 +1,6 @@
 {
   "name": "pizza-creator",
+  "homepage": "https://alun777.github.io/pizza-creator/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -68,7 +69,9 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --watchAll",
-    "test:unit": "npm run test -- --coverage --watchAll=false"
+    "test:unit": "npm run test -- --coverage --watchAll=false",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -100,6 +103,7 @@
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-jest": "^22.14.1",
     "eslint-plugin-react": "^7.12.4",
+    "gh-pages": "^2.0.1",
     "jest-enzyme": "^7.0.2",
     "react-test-renderer": "^16.8.6",
     "redux-mock-store": "^1.5.3"

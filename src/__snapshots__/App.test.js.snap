@@ -12,6 +12,22 @@ exports[`renders without crashing 1`] = `
     }
   }
 >
-  <Connect(PizzaCreatorAppForm) />
+  <BrowserRouter
+    basename=""
+  >
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(PizzaCreatorAppForm)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/"
+    />
+  </BrowserRouter>
 </Provider>
 `;

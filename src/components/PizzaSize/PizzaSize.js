@@ -36,10 +36,10 @@ PizzaSize.propTypes = {
   sizeName: PropTypes.string,
   sizePrice: PropTypes.number,
   handleSelectedSize: PropTypes.func.isRequired,
-  selectedPizza: PropTypes.arrayOf(PropTypes.shape({
+  selectedPizza: PropTypes.shape({
     sizeName: PropTypes.string,
     sizePrice: PropTypes.number,
-  })),
+  }),
 };
 
 

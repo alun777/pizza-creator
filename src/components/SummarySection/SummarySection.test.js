@@ -6,7 +6,7 @@ import SummarySection from './SummarySection';
 function setup() {
   const props = {
     selectedToppings: [{ name: 'Sweetcorn', amount: 1, price: 0.99 }],
-    selectedPizza: [],
+    selectedPizza: {},
     summaryTotalPrice: 0,
     onAmountAdd: jest.fn(),
     onAmountMinus: jest.fn(),
