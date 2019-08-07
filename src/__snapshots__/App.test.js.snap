@@ -12,9 +12,7 @@ exports[`renders without crashing 1`] = `
     }
   }
 >
-  <BrowserRouter
-    basename=""
-  >
+  <BrowserRouter>
     <Route
       component={
         Object {
