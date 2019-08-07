@@ -13,7 +13,7 @@ https://alun777.github.io/pizza-creator/
 - First built on React along.
 - Adopted Redux and React Redux to manage the state.
 - Added a middleware Redux-thunk to allow async logic with the store.
-- Applied immutable.js to improve performance 
+- Applied immutable.js to improve performance .
 
 ### Prerequisites 
 
@@ -29,7 +29,7 @@ https://alun777.github.io/pizza-creator/
 
 - Jest + Enzyme
 - Test Coverage: 92.74%
-- `npm run test:unit` to check the test result 
+- `npm run test:unit` to check the test result
 
 ### Linting
 
